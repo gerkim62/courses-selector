@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CourseUploader({ handleUpload }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [isError, setIsError] = useState(false);
+  const navigate = useNavigate();
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -34,7 +36,10 @@ function CourseUploader({ handleUpload }) {
       </button>
 
       {/* how to use */}
-      <a href="/how-to-use" className="text-blue-500 mt-4 hover:underline">
+      <a
+        onClick={navigate("/how-to-use")}
+        className="text-blue-500 mt-4 hover:underline"
+      >
         How to use
       </a>
     </div>
