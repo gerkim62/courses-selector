@@ -74,7 +74,6 @@ function App() {
           <>
             <Header />
             <Tutorial />
-            {/* <Footer /> */}
           </>
         }
       />
