@@ -37,7 +37,7 @@ function CourseUploader({ handleUpload }) {
 
       {/* how to use */}
       <a
-        onClick={navigate("/how-to-use")}
+        onClick={() => navigate("/how-to-use")}
         className="text-blue-500 mt-4 hover:underline"
       >
         How to use
