@@ -10,10 +10,13 @@ import findBestSchedule from "./utils/findBestSchedule";
 import OutputTable from "./components/OutputTable";
 import { useEffect, useState } from "react";
 import Tutorial from "./components/Tutorial";
+import ScheduleCombinationList from "./components/ScheduleCombinations";
+import findAllScheduleCombinations from "./utils/findAllScheduleCombinations";
 
 function App() {
   //output courses array
   const [outputCoursesArray, setOutputCoursesArray] = useState([]);
+  const [scheduleCombinations, setScheduleCombinations] = useState([]);
   //useeffect for navigate to output page
   const navigate = useNavigate();
   useEffect(() => {
@@ -36,6 +39,11 @@ function App() {
 
           const bestSchedule = findBestSchedule(coursesArray);
           console.log("Best schedule:", bestSchedule);
+
+          const scheduleCombinations =
+            findAllScheduleCombinations(coursesArray);
+          console.log("Schedule combinations:", scheduleCombinations);
+          setScheduleCombinations(scheduleCombinations);
 
           setOutputCoursesArray(bestSchedule);
         } catch (error) {
@@ -63,7 +71,10 @@ function App() {
           <>
             {" "}
             <Header />
-            <OutputTable outputCoursesArray={outputCoursesArray} />
+            <ScheduleCombinationList
+              scheduleCombinations={scheduleCombinations}
+            />
+            {/* <OutputTable outputCoursesArray={outputCoursesArray} /> */}
             {/* <Footer  /> */}
           </>
         }
