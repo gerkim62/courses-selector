@@ -9,8 +9,10 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { text: "Home", href: "/" },
+    // { text: "Home", href: "/" },
     { text: "How to use", href: "/help" },
+        { text: "Upload CSV", href: "/" },
+
     { text: "View Selection", href: "/output" },
 
     // { text: "Contact Me", href: "/contact" },
@@ -74,6 +76,7 @@ const Navbar = () => {
         <div className="px-2 pt-0 pb-3 space-y-1">
           {navLinks.map((link, index) => (
             <Link
+            onClick={toggleMenu}
               key={index}
               to={link.href}
               className="text-gray-300 hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium"

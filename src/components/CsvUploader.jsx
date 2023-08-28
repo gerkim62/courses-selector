@@ -92,7 +92,7 @@ function CourseUploader({ handleUpload }) {
   };
 
   return (
-    <div className="flex flex-col items-center my-10">
+    <div className="flex flex-col items-center justify-center my-10 min-h-[50vh]">
       <h1 className="text-2xl font-semibold mb-4">Upload Courses CSV</h1>
 
       <label
