@@ -2,48 +2,66 @@ import React from "react";
 
 const Tutorial = () => {
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">
-        How to Use the Course Scheduler
-      </h1>
-      <ol className="list-decimal list-inside space-y-2">
-        <li>
-          Go to the registration website and select the courses you want to
-          take.
-          <ul className="list-disc list-inside ml-4">
-            <li>
-              Select ALL the available options you're interested in (e.g.,Group
-              A, B etc).
-            </li>
-            <li>Make sure to choose different OPTIONS for each course.</li>
-          </ul>
-        </li>
-        <li>
-          Once you've selected all your courses and options, go to the "Selected
-          Timetable" section.
-        </li>
-        <li>
-          In the "Selected Timetable" section, you'll find an option to export
-          your schedule as a CSV file.
-          <ul className="list-disc list-inside ml-4">
-            <li>Click on the "CSV" button to save the file to your device.</li>
-          </ul>
-        </li>
-        <li>Come back to this app and go to the upload section.</li>
-        <li>
-          Upload the downloaded CSV file by clicking the "Upload CSV" button.
-          <ul className="list-disc list-inside ml-4">
-            <li>
-              The app will process the file and choose onlyu the options that
-              don't clash.
-            </li>
-          </ul>
-        </li>
-      </ol>
-
-      <a href="/" className="py-2 px-4 rounded font-semibold bg-blue-500 hover:bg-blue-700 text-white mx-auto my-4">
-        Go to App
-      </a>
+    <div className="flex justify-center items-center">
+      <div className="p-8 bg-gray-100 shadow-lg rounded-sm md:px-20 md:tracking-wide max-w-3xl xl:max-w-4xl">
+        <h1 className="text-3xl font-bold mb-4">How to Use this Tool</h1>
+        <p className="mb-4">
+          Welcome! Follow these steps for how to use our course selection tool:
+        </p>
+        <div className="pl-6 space-y-3">
+          <div className="flex items-start">
+            <div className="mr-3 text-blue-600 font-bold">1.</div>
+            <div>
+              Start by visiting the UMIS registration website. Then{" "}
+              <span className="font-bold underline">
+                select all available options for each course
+              </span>{" "}
+              (like Group A, Group B, Group C etc). This smart tool will
+              automatically pick one option among all those options later.
+            </div>
+          </div>
+          <div className="flex items-start">
+            <div className="mr-3 text-blue-600 font-bold">2.</div>
+            <div>
+              After you've made your selections for each course, head over to
+              the "Selected Timetable" section.
+            </div>
+          </div>
+          <div className="flex items-start">
+            <div className="mr-3 text-blue-600 font-bold">3.</div>
+            <div>
+              In the "Selected Timetable" section, at the top-right corner of
+              the timetable, find the "Export" button. Click it to save the
+              timetable as a CSV file on your device. You'll need to upload this
+              CSV to our app.
+            </div>
+          </div>
+          <div className="flex items-start">
+            <div className="mr-3 text-blue-600 font-bold">4.</div>
+            <div>
+              Return to our app and use the "Upload CSV" button to upload the
+              CSV file you downloaded earlier. Our app will analyze the file and
+              identify options that won't overlap. We'll present you with a list
+              of clash-free course combinations. Choose the one that suits you
+              best!
+            </div>
+          </div>
+          <div className="flex items-start">
+            <div className="mr-3 text-blue-600 font-bold">5.</div>
+            <div>
+              After choosing your favorite combination, remember these steps.
+              Return to the UMIS registration website. For each course, select
+              the option that matches the option in your combination. Remove the
+              other options (e.g., if the app picked Group A, remove Groups B
+              and C). This way, you'll have only compatible choices for each
+              course.
+            </div>
+          </div>
+        </div>
+        <a href="/" className="mt-6 inline-block text-blue-500 hover:underline">
+          Go Back to Upload
+        </a>
+      </div>
     </div>
   );
 };

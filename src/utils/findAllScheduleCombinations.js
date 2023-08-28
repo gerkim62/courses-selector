@@ -1,5 +1,8 @@
+
+
 function findAllScheduleCombinations(courseData, { minCoursesCount = 2 } = {}) {
   const creditHoursCache = {};
+  let skipCreditHoursPrompt = false;
   function hasTimeConflict(courseA, courseB) {
     if (!courseA || !courseB) {
       console.log("hasTimeConflict received invalid input:", courseA, courseB);
@@ -35,11 +38,19 @@ function findAllScheduleCombinations(courseData, { minCoursesCount = 2 } = {}) {
     );
 
     if (!hasConflict && !uniqueCourseCodes.has(course.courseCode)) {
-      if (typeof creditHoursCache[course.courseCode] === "undefined") {
+      if (
+        typeof creditHoursCache[course.courseCode] === "undefined" &&
+        !skipCreditHoursPrompt
+      ) {
         console.log("creditHoursCache:", creditHoursCache);
         const creditHours = parseFloat(
-          prompt(`Enter credit hours for ${course.courseCode}:`)
+          prompt(
+            `Enter credit hours for ${course.courseCode} (Cancel to Skip):`
+          )
         );
+        if (isNaN(creditHours)) {
+          skipCreditHoursPrompt = true;
+        }
         course.creditHours = creditHours; // Store credit hours in the course object
         creditHoursCache[course.courseCode] = creditHours; // Store credit hours in the cache
       } else {

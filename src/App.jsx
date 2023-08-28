@@ -1,22 +1,25 @@
-import CsvUploader from "./components/CsvUploader";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import { useEffect, useState } from "react";
 
 //react-router-dom
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 import getCoursesArray from "./utils/csvToObject";
 import findBestSchedule from "./utils/findBestSchedule";
-import OutputTable from "./components/OutputTable";
-import { useEffect, useState } from "react";
+import findAllScheduleCombinations from "./utils/findAllScheduleCombinations";
+
+import Layout from "./components/layout";
+import CsvUploader from "./components/CsvUploader";
 import Tutorial from "./components/Tutorial";
 import ScheduleCombinationList from "./components/ScheduleCombinations";
-import findAllScheduleCombinations from "./utils/findAllScheduleCombinations";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
   //output courses array
   const [outputCoursesArray, setOutputCoursesArray] = useState([]);
-  const [scheduleCombinations, setScheduleCombinations] = useState([]);
+  const [scheduleCombinations, setScheduleCombinations] = useLocalStorage(
+    "combinations",
+    []
+  );
   //useeffect for navigate to output page
   const navigate = useNavigate();
   useEffect(() => {
@@ -29,7 +32,7 @@ function App() {
     if (file) {
       const reader = new FileReader();
 
-      reader.onload = function (event) {
+      reader.onload = async function (event) {
         try {
           const csvContent = event.target.result; // This is the CSV content as a string
           console.log("CSV content:", csvContent);
@@ -65,40 +68,18 @@ function App() {
 
   return (
     <Routes>
-      <Route
-        path="/output"
-        element={
-          <>
-            {" "}
-            <Header />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<CsvUploader handleUpload={handleUpload} />} />
+        <Route
+          path="output"
+          element={
             <ScheduleCombinationList
               scheduleCombinations={scheduleCombinations}
             />
-            {/* <OutputTable outputCoursesArray={outputCoursesArray} /> */}
-            {/* <Footer  /> */}
-          </>
-        }
-      />
-      <Route
-        path="/how-to-use"
-        element={
-          <>
-            <Header />
-            <Tutorial />
-          </>
-        }
-      />
-
-      <Route
-        path="*"
-        element={
-          <>
-            <Header />
-            <CsvUploader handleUpload={handleUpload} />
-            <Footer />
-          </>
-        }
-      />
+          }
+        />
+        <Route path="help" element={<Tutorial />} />
+      </Route>
     </Routes>
   );
 }
