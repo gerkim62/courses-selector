@@ -3,19 +3,34 @@ import { useEffect, useState } from "react";
 //react-router-dom
 import { Routes, Route, useNavigate } from "react-router-dom";
 
+//utils
 import getCoursesArray from "./utils/csvToObject";
 import findBestSchedule from "./utils/findBestSchedule";
 import findAllScheduleCombinations from "./utils/findAllScheduleCombinations";
 
+//components
 import Layout from "./components/layout";
 import CsvUploader from "./components/CsvUploader";
 import Tutorial from "./components/Tutorial";
 import ScheduleCombinationList from "./components/ScheduleCombinations";
+
+//hooks
 import useLocalStorage from "./hooks/useLocalStorage";
 
-function App() {
+//izitoast
+import iziToast from "izitoast"; // Import the iziToast library
+import "izitoast/dist/css/iziToast.min.css"; // Import the CSS
 
-  
+function App() {
+  iziToast.warning({
+    title: "Important Notice",
+    message:
+      "🚨 Attention! This app was created by developer.gerison and is provided for free. Beware of scammers attempting to deceive you into paying for the use of an app they have no knowledge about its origin. Feel free to reach out using the contact information provided at the bottom of the page if you have any concerns. Stay vigilant and stay safe! 🛡️",
+    position: "bottomCenter",
+    timeout: false,
+    progressBarColor: "#FF4444",
+  });
+
   //output courses array
   const [outputCoursesArray, setOutputCoursesArray] = useState([]);
   const [scheduleCombinations, setScheduleCombinations] = useLocalStorage(
