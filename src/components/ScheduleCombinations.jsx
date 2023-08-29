@@ -59,14 +59,13 @@ const ScheduleCombinationList = ({ scheduleCombinations }) => {
       {scheduleCombinations.map((combination, index) => (
         <div key={index} className="bg-white py-4 shadow rounded mx-auto">
           <h2
-           className="text-md font-bold mb-2 cursor-pointer flex items-center justify-center max-w-screen w-max mx-auto px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 transition duration-300 ease-in-out text-white text-sm"
-
+            className="text-md font-bold mb-2 cursor-pointer flex items-center justify-center max-w-screen w-max mx-auto px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 transition duration-300 ease-in-out text-white text-sm"
             onClick={() => toggleCombination(index)}
           >
             Combination {index + 1} of {scheduleCombinations.length}&nbsp;
             {expandedCombinations.includes(index) ? (
               <span className="text-sm capitalize font-sm">
-                ({calculateTotalCredits(combination) || "unknown"} credit hours)
+                ({calculateTotalCredits(combination) || " _"} credit hours)
               </span>
             ) : (
               <span className="text-sm capitalize font-mono">

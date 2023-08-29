@@ -79,6 +79,7 @@ function App() {
           }
         />
         <Route path="help" element={<Tutorial />} />
+        <Route path="*" element={<Tutorial />} />
       </Route>
     </Routes>
   );

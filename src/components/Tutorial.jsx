@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Tutorial = () => {
   return (
@@ -58,9 +59,9 @@ const Tutorial = () => {
             </div>
           </div>
         </div>
-        <a href="/" className="mt-6 inline-block text-blue-500 hover:underline">
+        <Link to="/" className="mt-6 inline-block text-blue-500 hover:underline">
           Go Back to Upload
-        </a>
+        </Link>
       </div>
     </div>
   );

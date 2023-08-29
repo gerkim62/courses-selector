@@ -1,5 +1,3 @@
-
-
 function findAllScheduleCombinations(courseData, { minCoursesCount = 2 } = {}) {
   const creditHoursCache = {};
   let skipCreditHoursPrompt = false;
@@ -73,7 +71,9 @@ function findAllScheduleCombinations(courseData, { minCoursesCount = 2 } = {}) {
   // Sort schedules in descending order based on the number of courses
   allScheduleCombinations.sort((a, b) => b.length - a.length);
 
-  return removeSubsets(allScheduleCombinations);
+  const withoutSubsets = removeSubsets(allScheduleCombinations);
+
+  return sortCombinationsByCreditHours(withoutSubsets);
 }
 
 function removeSubsets(scheduleCombinations) {
@@ -227,5 +227,28 @@ function removeSubsets(scheduleCombinations) {
 // ];
 
 // findAllScheduleCombinations(courseData, { minCoursesCount: 2 });
+
+function sortCombinationsByCreditHours(scheduleCombinations) {
+  // Calculate the sum of credit hours for each combination
+  const combinationsWithCreditSum = scheduleCombinations.map((combination) => {
+    const creditSum = combination.reduce(
+      (sum, course) => sum + course.creditHours,
+      0
+    );
+    return { combination, creditSum };
+  });
+
+  console.log(combinationsWithCreditSum);
+
+  // Sort the combinations based on the credit sum in descending order
+  combinationsWithCreditSum.sort((a, b) => b.creditSum - a.creditSum);
+
+  // Extract the sorted combinations without the credit sum
+  const sortedCombinations = combinationsWithCreditSum.map(
+    (item) => item.combination
+  );
+
+  return sortedCombinations;
+}
 
 export default findAllScheduleCombinations;
