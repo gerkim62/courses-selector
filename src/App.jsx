@@ -14,6 +14,8 @@ import ScheduleCombinationList from "./components/ScheduleCombinations";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
+
+  
   //output courses array
   const [outputCoursesArray, setOutputCoursesArray] = useState([]);
   const [scheduleCombinations, setScheduleCombinations] = useLocalStorage(
