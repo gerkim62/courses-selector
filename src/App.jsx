@@ -22,15 +22,25 @@ import iziToast from "izitoast"; // Import the iziToast library
 import "izitoast/dist/css/iziToast.min.css"; // Import the CSS
 
 function App() {
-  iziToast.destroy();
-  iziToast.warning({
-    title: "Important Notice",
-    message:
-      "🚨 Attention! This app is created by developer.gerison and is free. Beware of scammers trying to charge you. Contact me using the info at the bottom of the page.",
-    timeout: false,
-    progressBarColor: "#FF4444",
-    layout: 2, // This sets the toast to be centered and responsive
-  });
+  const [showMessage, setShowMessage] = useState(true);
+
+  useEffect(() => {
+    if (showMessage) {
+      iziToast.destroy()
+      iziToast.warning({
+        title: "Do not pay! It is free.",
+        message:
+          "This app is created by developer.gerison and is free. Beware of scammers trying to charge you. Contact me using the info at the bottom of the page.",
+        maxWidth: 500,
+        timeout: 30000,
+        position: "bottomRight",
+        progressBarColor: "#FF4444",
+        layout: 2,
+      });
+
+      setShowMessage(false);
+    }
+  }, []); // Empty dependency array ensures the effect runs only once on component mount
 
   //output courses array
   const [outputCoursesArray, setOutputCoursesArray] = useState([]);
