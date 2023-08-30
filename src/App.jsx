@@ -26,10 +26,10 @@ function App() {
   iziToast.warning({
     title: "Important Notice",
     message:
-      "🚨 Attention! This app was created by developer.gerison and is provided for free. Beware of scammers attempting to deceive you into paying for the use of an app they have no knowledge about its origin. Feel free to reach out using the contact information provided at the bottom of the page if you have any concerns. Stay vigilant and stay safe! 🛡️",
-    // position: "bottomCenter",
+      "🚨 Attention! This app is created by developer.gerison and is free. Beware of scammers trying to charge you. Contact me using the info at the bottom of the page.",
     timeout: false,
     progressBarColor: "#FF4444",
+    layout: 2, // This sets the toast to be centered and responsive
   });
 
   //output courses array
