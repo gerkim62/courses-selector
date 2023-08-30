@@ -22,11 +22,12 @@ import iziToast from "izitoast"; // Import the iziToast library
 import "izitoast/dist/css/iziToast.min.css"; // Import the CSS
 
 function App() {
+  iziToast.destroy();
   iziToast.warning({
     title: "Important Notice",
     message:
       "🚨 Attention! This app was created by developer.gerison and is provided for free. Beware of scammers attempting to deceive you into paying for the use of an app they have no knowledge about its origin. Feel free to reach out using the contact information provided at the bottom of the page if you have any concerns. Stay vigilant and stay safe! 🛡️",
-    position: "bottomCenter",
+    // position: "bottomCenter",
     timeout: false,
     progressBarColor: "#FF4444",
   });
